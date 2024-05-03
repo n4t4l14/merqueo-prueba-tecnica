@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: ./.docker/Dockerfile
-    image: php:8.3-fpm
+    image: merqueo-nc-test-php:8.3-fpm
     container_name: merqueo_app
     restart: unless-stopped
     tty: true

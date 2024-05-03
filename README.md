@@ -1,23 +1,19 @@
 ## Ejecución de contenedores docker
 
-### Copiar archivo de ambiente
+### Construcción y ejecución de contenedores docker
+**Nota**: el usuario debe tener permisos de ejecución para ``docker compose`` de lo contrario ejecutar como superadministrador
+
 ```bash
-cp .env.example .env
+docker compose up -d --build
 ```
 
-### Armado y ejecución de contenedores docker
+### ejecución de setup del proyecto
 ```bash
-docker up -d
+cat ./.docker/setup.sh | docker exec -i merqueo_app bash
 ```
 
-### ejecución de migraciones y comandos para arrancar proyecto
-```bash
+### Notas:
 
-# Ingreso a contenedor de aplicación
-docker exec -it  merqueo_app bash
+Configuración de conexión a mysql esto con el objetivo de ver desde la máquina anfitrión la base de datos
 
-# Ejecución de migraciones y configuraciones iniciales
-php artisan key:generate
-php artisan migrate --seed
-
-```
+![img.png](./docs/mysql_connect_service.png)
