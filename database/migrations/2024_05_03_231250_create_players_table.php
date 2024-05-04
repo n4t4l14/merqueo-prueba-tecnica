@@ -22,6 +22,7 @@ return new class() extends Migration {
             $table->timestamps();
 
             $table->foreign('team_id')->references('id')->on('teams');
+            $table->unique(['team_id', 'shirt_number']);
         });
     }
 

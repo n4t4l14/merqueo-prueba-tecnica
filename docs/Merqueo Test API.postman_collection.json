@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "c4ca19d4-e142-47a0-833c-fc7a2583c5bf",
+		"_postman_id": "2abd3d83-30a1-4b60-ac90-5cbea26defda",
 		"name": "Merqueo Test API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "1882185",
-		"_collection_link": "https://planetary-satellite-182595.postman.co/workspace/Team-Workspace~a6eb2d09-f028-46e1-874c-ebc92d344acf/collection/1882185-c4ca19d4-e142-47a0-833c-fc7a2583c5bf?action=share&source=collection_link&creator=1882185"
+		"_exporter_id": "18038796",
+		"_collection_link": "https://planetary-satellite-182595.postman.co/workspace/Personal-Workspace~cad9e977-d812-407e-ad6e-6dfc57552658/collection/18038796-2abd3d83-30a1-4b60-ac90-5cbea26defda?action=share&source=collection_link&creator=18038796"
 	},
 	"item": [
 		{
@@ -32,7 +32,7 @@
 								{
 									"key": "flag",
 									"type": "file",
-									"src": "/home/miguel-cv/Descargas/colombia.png"
+									"src": "/home/natalia/Descargas/col_dflag.jpeg"
 								}
 							]
 						},
@@ -96,6 +96,139 @@
 								"api",
 								"v1",
 								"teams"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "per_page",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Players",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Juan Cuadrado",
+									"type": "text"
+								},
+								{
+									"key": "nationality",
+									"value": "Colombiano",
+									"type": "text"
+								},
+								{
+									"key": "age",
+									"value": "18",
+									"type": "text"
+								},
+								{
+									"key": "position",
+									"value": "Defensa",
+									"type": "text"
+								},
+								{
+									"key": "shirt_number",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/home/natalia/Descargas/Juan_Cuadra.jpeg"
+								},
+								{
+									"key": "team_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/v1/players",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"players"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/v1/players/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"players",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/v1/players",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"players"
 							],
 							"query": [
 								{

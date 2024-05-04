@@ -10,9 +10,10 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 /**
  * @property int    $id
  * @property string $name
+ * @property string $nationality
  * @property int    $age
  * @property string $position
- * @property string $shirt_name
+ * @property string $shirt_number
  * @property string $photo
  * @property int    $team_id
  * @property Carbon $created_at
