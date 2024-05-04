@@ -5,12 +5,12 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\{HasMany, HasOne};
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int    $id
  * @property string $name
- * @property string $country_id
+ * @property string $flag
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
@@ -23,12 +23,12 @@ class Team extends Model
         'updated_at' => 'datetime',
     ];
 
-    public function countryRelation(): HasOne
-    {
-        return $this->hasOne(Country::class);
-    }
+    protected $fillable = [
+        'name',
+        'flag',
+    ];
 
-    public function playersRelation(): HasMany
+    public function players(): HasMany
     {
         return $this->hasMany(Player::class);
     }

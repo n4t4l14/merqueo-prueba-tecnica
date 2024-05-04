@@ -12,11 +12,9 @@ return new class() extends Migration {
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->unsignedBigInteger('country_id');
+            $table->string('name', 100)->unique();
+            $table->string('flag', 150)->nullable();
             $table->timestamps();
-
-            $table->foreign('country_id')->references('id')->on('countries');
         });
     }
 
@@ -25,9 +23,6 @@ return new class() extends Migration {
      */
     public function down(): void
     {
-        Schema::table('teams', function (Blueprint $table) {
-            $table->dropForeign('teams_country_id_foreign');
-        });
         Schema::dropIfExists('teams');
     }
 };
