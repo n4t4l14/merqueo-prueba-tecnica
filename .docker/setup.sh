@@ -10,3 +10,6 @@ php artisan key:generate
 
 # Ejecución de migraciones y seeders
 php artisan migrate --seed
+
+# Creación de vinculo para recursos publicos
+php artisan storage:link --force
