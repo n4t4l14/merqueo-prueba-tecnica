@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property int $id
+ * @property int    $id
  * @property string $name
  * @property string $flag
  * @property Carbon $created_at
@@ -22,6 +22,6 @@ class Country extends Model
     protected $fillable = [
         'name',
         'code',
-        'flag'
+        'flag',
     ];
 }

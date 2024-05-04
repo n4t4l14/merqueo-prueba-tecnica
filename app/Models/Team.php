@@ -5,11 +5,10 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\{HasMany, HasOne};
 
 /**
- * @property int $id
+ * @property int    $id
  * @property string $name
  * @property string $country_id
  * @property Carbon $created_at
@@ -33,5 +32,4 @@ class Team extends Model
     {
         return $this->hasMany(Player::class);
     }
-
 }

@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
- * @property int $id
+ * @property int    $id
  * @property string $name
- * @property int $age
+ * @property int    $age
  * @property string $position
  * @property string $shirt_name
  * @property string $photo
- * @property int $team_id
+ * @property int    $team_id
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
@@ -34,7 +34,7 @@ class Player extends Model
         'position',
         'shirt_number',
         'photo',
-        'team_id'
+        'team_id',
     ];
 
     public function teamRelated(): HasOne
