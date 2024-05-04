@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Players;
 
+use App\Models\Player;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -30,6 +31,14 @@ class StoreFormRequest extends FormRequest
                 }),
             ],
         ];
+    }
+
+    public function validated($key = null, $default = null): Player
+    {
+        $data = parent::validated($key, $default);
+        unset($data['photo']);
+
+        return new Player($data);
     }
 
     public function messages(): array

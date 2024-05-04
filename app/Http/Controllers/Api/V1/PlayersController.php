@@ -27,14 +27,6 @@ class PlayersController extends Controller
      */
     public function store(StoreFormRequest $request, CreateAction $action): PlayerResource
     {
-        return PlayerResource::make($action->execute(
-            $request->validated('name'),
-            $request->validated('nationality'),
-            $request->validated('age'),
-            $request->validated('position'),
-            $request->validated('shirt_number'),
-            $request->file('photo'),
-            $request->validated('team_id'),
-        ));
+        return PlayerResource::make($action->execute($request->validated(), $request->file('photo')));
     }
 }

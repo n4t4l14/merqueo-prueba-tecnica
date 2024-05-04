@@ -16,38 +16,29 @@ class CreateAction
     /**
      * @throws PlayersException
      */
-    public function execute(
-        string $name,
-        string $nationality,
-        int $age,
-        string $position,
-        int $shirtNumber,
-        UploadedFile $photo,
-        int $teamId
-    ): Player {
-        return $this->playersRepository->create(new Player([
-            'name' => $name,
-            'nationality' => $nationality,
-            'age' => $age,
-            'position' => $position,
-            'shirt_number' => $shirtNumber,
-            'photo' => $this->saveFile($name, $photo),
-            'team_id' => $teamId,
-        ]));
+    public function execute(Player $player, UploadedFile $photo): Player
+    {
+        $player->photo = $this->saveFile($player, $photo);
+
+        return $this->playersRepository->create($player);
     }
 
     /**
      * @throws PlayersException
      */
-    public function saveFile(string $name, UploadedFile $photo): string
+    public function saveFile(Player $player, UploadedFile $photo): string
     {
-        $cleanStr = preg_replace('/[^A-Za-z0-9]/', '', $name);
-        $photoName = strtolower(trim($cleanStr)) . '.' . $photo->extension();
+        $photoName = sprintf(
+            'player_%d_team_%d.%s',
+            $player->shirt_number,
+            $player->team_id,
+            $photo->extension()
+        );
 
-        if (!$photo->storeAs('public/players', $photoName)) {
+        if (!$photo->storeAs('players', $photoName, ['disk' => 'public'])) {
             throw new PlayersException('Error al subir el archivo');
         }
 
-        return url("/storage/players/$photoName");
+        return url("storage/players/$photoName");
     }
 }

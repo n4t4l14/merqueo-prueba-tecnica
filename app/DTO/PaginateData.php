@@ -10,4 +10,9 @@ readonly class PaginateData
         public array $filters,
     ) {
     }
+
+    public function getFilter(string $key): mixed
+    {
+        return $this->filters[$key] ?? null;
+    }
 }
