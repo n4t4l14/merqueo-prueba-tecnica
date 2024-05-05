@@ -18,7 +18,7 @@ class GenerateGamesAction
     /**
      * @throws ChampionshipException
      */
-    public function execute(bool $startChampionship = true, ?int $championshipCode = null): Collection
+    public function execute(int $championshipCode, ?bool $startChampionship = true): Collection
     {
         if ($startChampionship) {
             $teams = $this->teamsRepository->get();
@@ -26,7 +26,7 @@ class GenerateGamesAction
                 throw new ChampionshipException('La cantidad de equipos debe ser par para iniciar el campeonato!');
             }
 
-            return $this->createGames(teams: $teams, championshipCode: time(), round: 1);
+            return $this->createGames(teams: $teams, championshipCode: $championshipCode, round: 1);
         }
 
         // TODO: Lógica para generar siguiente ronda

@@ -9,6 +9,6 @@ class ChampionshipsController extends Controller
 {
     public function store(GenerateGamesAction $action)
     {
-        return $action->execute();
+        return $action->execute(time());
     }
 }

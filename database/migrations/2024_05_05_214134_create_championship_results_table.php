@@ -1,5 +1,6 @@
 <?php
 
+use App\Constants\TeamStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,6 +21,7 @@ return new class() extends Migration {
             $table->integer('goals')->default(0);
             $table->integer('won_games')->default(0);
             $table->integer('lost_games')->default(0);
+            $table->enum('team_status', TeamStatus::toArray())->nullable();
             $table->timestamps();
 
             $table->foreign('team_id')->references('id')->on('teams');

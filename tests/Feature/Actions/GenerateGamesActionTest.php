@@ -17,17 +17,20 @@ class GenerateGamesActionTest extends FeatureTestCase
 {
     private GenerateGamesAction $action;
 
+    private int $championshipCode;
+
     protected function setUp(): void
     {
         parent::setUp();
         $this->action = $this->app->make(GenerateGamesAction::class);
+        $this->championshipCode = time();
     }
 
     #[Test]
     public function itCanStartChampionship(): void
     {
         $teams = Team::factory()->count(6)->create();
-        $this->action->execute();
+        $this->action->execute($this->championshipCode);
 
         $this->assertCount(3, Game::all());
 
@@ -43,7 +46,7 @@ class GenerateGamesActionTest extends FeatureTestCase
     public function itCanGenerateNextChampionshipRound(): void
     {
         Team::factory()->count(6)->create();
-        $games = $this->action->execute();
+        $games = $this->action->execute($this->championshipCode);
     }
 
     #[Test]
@@ -53,10 +56,6 @@ class GenerateGamesActionTest extends FeatureTestCase
 
         $this->expectException(ChampionshipException::class);
         $this->expectExceptionMessage('La cantidad de equipos debe ser par para iniciar el campeonato!');
-        $this->action->execute();
-    }
-
-    public function beginDatabaseTransaction()
-    {
+        $this->action->execute($this->championshipCode);
     }
 }
