@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\V1\{PlayersController, TeamsController};
+use App\Http\Controllers\Api\V1\{ChampionshipsController, PlayersController, TeamsController};
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/teams')->name('teams.')->group(function () {
@@ -9,4 +9,8 @@ Route::prefix('/teams')->name('teams.')->group(function () {
 
 Route::prefix('/players')->name('players.')->group(function () {
     Route::apiResource('', PlayersController::class)->parameter('', 'players')->only('index', 'store', 'show');
+});
+
+Route::prefix('/championships')->name('championships.')->group(function () {
+    Route::apiResource('', ChampionshipsController::class)->parameter('', 'championships')->only('index', 'store', 'show');
 });

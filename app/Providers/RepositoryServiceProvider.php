@@ -2,8 +2,14 @@
 
 namespace App\Providers;
 
-use App\Repositories\Contracts\{PlayersRepositoryInterface, TeamBatchesRepositoryInterface, TeamsRepositoryInterface};
-use App\Repositories\{PlayersRepositoryEloquent, TeamBatchesRepositoryEloquent, TeamsRepositoryEloquent};
+use App\Repositories\Contracts\{ChampionshipsRepositoryInterface,
+    PlayersRepositoryInterface,
+    TeamBatchesRepositoryInterface,
+    TeamsRepositoryInterface};
+use App\Repositories\{ChampionshipsRepositoryEloquent,
+    PlayersRepositoryEloquent,
+    TeamBatchesRepositoryEloquent,
+    TeamsRepositoryEloquent};
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -12,5 +18,6 @@ class RepositoryServiceProvider extends ServiceProvider
         TeamsRepositoryInterface::class => TeamsRepositoryEloquent::class,
         PlayersRepositoryInterface::class => PlayersRepositoryEloquent::class,
         TeamBatchesRepositoryInterface::class => TeamBatchesRepositoryEloquent::class,
+        ChampionshipsRepositoryInterface::class => ChampionshipsRepositoryEloquent::class,
     ];
 }
