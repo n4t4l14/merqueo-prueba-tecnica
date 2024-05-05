@@ -8,24 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * @property int $id
- * @property int $championship_code
- * @property int $round
- * @property int $game_id
- * @property int $team_id_a
- * @property int $team_id_b
- * @property int $red_card_a
- * @property int $red_card_b
- * @property int $yellow_card_a
- * @property int $yellow_card_b
- * @property int $goals_a
- * @property int $goals_b
- * @property int $winning_team_id
- * @property int $losing_team_id
+ * @property int    $id
+ * @property int    $championship_code
+ * @property int    $round
+ * @property int    $order
+ * @property int    $team_id_a
+ * @property int    $team_id_b
+ * @property int    $red_card_a
+ * @property int    $red_card_b
+ * @property int    $yellow_card_a
+ * @property int    $yellow_card_b
+ * @property int    $goals_a
+ * @property int    $goals_b
+ * @property int    $winning_team_id
+ * @property int    $losing_team_id
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
-class Championship extends Model
+class Game extends Model
 {
     use HasFactory;
 
@@ -37,7 +37,7 @@ class Championship extends Model
     protected $fillable = [
         'championship_code',
         'round',
-        'game_id',
+        'order',
         'team_id_a',
         'team_id_b',
         'red_card_a',

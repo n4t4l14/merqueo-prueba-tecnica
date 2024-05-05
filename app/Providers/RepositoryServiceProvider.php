@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
-use App\Repositories\Contracts\{ChampionshipsRepositoryInterface,
+use App\Repositories\Contracts\{GameRepositoryInterface,
     PlayersRepositoryInterface,
     TeamBatchesRepositoryInterface,
     TeamsRepositoryInterface};
-use App\Repositories\{ChampionshipsRepositoryEloquent,
+use App\Repositories\{GameRepositoryEloquent,
     PlayersRepositoryEloquent,
     TeamBatchesRepositoryEloquent,
     TeamsRepositoryEloquent};
@@ -18,6 +18,6 @@ class RepositoryServiceProvider extends ServiceProvider
         TeamsRepositoryInterface::class => TeamsRepositoryEloquent::class,
         PlayersRepositoryInterface::class => PlayersRepositoryEloquent::class,
         TeamBatchesRepositoryInterface::class => TeamBatchesRepositoryEloquent::class,
-        ChampionshipsRepositoryInterface::class => ChampionshipsRepositoryEloquent::class,
+        GameRepositoryInterface::class => GameRepositoryEloquent::class,
     ];
 }
