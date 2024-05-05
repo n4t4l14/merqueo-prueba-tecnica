@@ -20,7 +20,13 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     curl \
-    libzip-dev
+    libzip-dev \
+    software-properties-common \
+    npm
+
+RUN npm install npm@latest -g && \
+    npm install n -g && \
+    n latest
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*

@@ -13,3 +13,6 @@ php artisan migrate --seed
 
 # Creación de vinculo para recursos publicos
 php artisan storage:link --force
+
+# instalación de dependencias node
+npm install && npm run build

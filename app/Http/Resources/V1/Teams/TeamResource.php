@@ -17,6 +17,7 @@ class TeamResource extends JsonResource
             'id' => $this->resource->id,
             'name' => $this->resource->name,
             'flag' => $this->resource->flag,
+            'created_at' => $this->resource->created_at,
         ];
     }
 }
