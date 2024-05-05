@@ -21,7 +21,7 @@ class BulkLoadAction
         $this->createTeams();
         $this->CreatePlayers();
 
-        return true;
+        return unlink($pathFile);
     }
 
     private function loadData(string $pathFile): void

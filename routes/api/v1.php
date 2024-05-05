@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/teams')->name('teams.')->group(function () {
     Route::apiResource('', TeamsController::class)->parameter('', 'teams')->only('index', 'store', 'show');
+    Route::post('/bulk-load', [TeamsController::class, 'bulkLoad'])->name('bulk-load');
 });
 
 Route::prefix('/players')->name('players.')->group(function () {

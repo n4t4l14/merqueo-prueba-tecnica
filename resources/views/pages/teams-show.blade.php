@@ -341,9 +341,9 @@
                     team_id: '{{$team['id']}}'
                 },
 
-                selectFile(event) {
-                    this.form.images = event.target.files[0];
-                },
+                // selectFile(event) {
+                //     this.form.images = event.target.files[0];
+                // },
 
                 postFormData() {
                     let self = this;
