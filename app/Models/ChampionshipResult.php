@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Constants\TeamStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int        $id
@@ -27,7 +28,8 @@ class ChampionshipResult extends Model
     ];
 
     protected $fillable = [
-        'championship_id',
+        'championship_code',
+        'current_round',
         'team_id',
         'red_cards',
         'yellow_cards',
@@ -35,4 +37,9 @@ class ChampionshipResult extends Model
         'won_games',
         'lost_games',
     ];
+
+    public function teams(): HasMany
+    {
+        return $this->hasMany(Team::class);
+    }
 }

@@ -19,7 +19,7 @@ interface TeamsRepositoryInterface
     public function create(Team $data): Team;
 
     /**
-     * @return Collection<Team>
+     * @return Collection<int, Team>
      */
     public function get(array $filters = []): Collection;
 }
