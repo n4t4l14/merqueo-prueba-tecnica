@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Constants\TeamStatus;
 use App\DTO\PaginateData;
 use App\Models\Team;
 use App\Repositories\Contracts\TeamsRepositoryInterface;
@@ -23,15 +24,28 @@ class TeamsRepositoryEloquent implements TeamsRepositoryInterface
         return Team::query()->findOrFail($id);
     }
 
+    public function get(array $filters = []): Collection
+    {
+        return empty($filters) ? Team::query()->get() : Team::query()->where($filters)->get();
+    }
+
+    public function getTeamsToContinueNextRound(int $championshipCode): Collection
+    {
+        $query = Team::query();
+
+        $query
+            ->select(['teams.*'])
+            ->join('championship_results', 'teams.id', '=', 'championship_results.team_id')
+            ->where('championship_results.championship_code', $championshipCode)
+            ->where('team_status', TeamStatus::CONTINUE);
+
+        return $query->get();
+    }
+
     public function create(Team $data): Team
     {
         $data->save();
 
         return $data;
-    }
-
-    public function get(array $filters = []): Collection
-    {
-        return empty($filters) ? Team::query()->get() : Team::query()->where($filters)->get();
     }
 }

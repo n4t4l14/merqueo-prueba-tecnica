@@ -13,4 +13,14 @@ class ChampionshipResultsRepositoryEloquent implements ChampionshipResultsReposi
 
         return $championshipResult;
     }
+
+    public function getMaxRound(int $championshipCode): int
+    {
+        $query = ChampionshipResult::query()
+            ->selectRaw('MAX(current_round) as max_current_round')
+            ->where('championship_code', $championshipCode)
+            ->groupBy('championship_code');
+
+        return $query->first()->getAttribute('max_current_round');
+    }
 }

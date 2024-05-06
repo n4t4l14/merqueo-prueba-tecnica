@@ -16,10 +16,15 @@ interface TeamsRepositoryInterface
 
     public function show(int $id): Team;
 
-    public function create(Team $data): Team;
-
     /**
      * @return Collection<int, Team>
      */
     public function get(array $filters = []): Collection;
+
+    /**
+     * @return Collection<Team>
+     */
+    public function getTeamsToContinueNextRound(int $championshipCode): Collection;
+
+    public function create(Team $data): Team;
 }
