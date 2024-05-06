@@ -16,4 +16,13 @@ enum TeamStatus: string
             self::ELIMINATED->value,
         ];
     }
+
+    public function getMessage(): string
+    {
+        return match ($this) {
+            self::WINNER => 'Ganador',
+            self::CONTINUE => 'Continua en la siguiente ronda',
+            self::ELIMINATED => 'Eliminado',
+        };
+    }
 }

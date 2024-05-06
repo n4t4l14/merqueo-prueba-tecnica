@@ -16,11 +16,15 @@ class TeamsController extends Controller
 
     public function show(int $teamId, TeamsRepositoryInterface $repository): View
     {
-        $team = TeamResource::make($repository->show($teamId))->toArray(request());
+        $team = $repository->show($teamId);
+        $championResult = $team->championshipResult;
+        $team = TeamResource::make($team)->toArray(request());
 
         return view('pages.teams-show', [
             'team' => $team,
             'teamName' => $team['name'],
+            'championship' => $championResult,
+            'championshipResult' => $team['championship_summary']->toArray(request()),
         ]);
     }
 }

@@ -13,5 +13,5 @@ Route::prefix('/players')->name('players.')->group(function () {
 });
 
 Route::prefix('/championships')->name('championships.')->group(function () {
-    Route::apiResource('', ChampionshipsController::class)->parameter('', 'championships')->only('index', 'store', 'show');
+    Route::get('/', [ChampionshipsController::class, 'generateChampionship'])->name('generate-championship');
 });

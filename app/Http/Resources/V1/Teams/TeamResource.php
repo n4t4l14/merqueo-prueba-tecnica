@@ -18,6 +18,7 @@ class TeamResource extends JsonResource
             'name' => $this->resource->name,
             'flag' => $this->resource->flag,
             'created_at' => $this->resource->created_at,
+            'championship_summary' => $this->whenLoaded('championshipResult', fn () => ChampionshipSummaryResource::make($this->resource->championshipResult)),
         ];
     }
 }

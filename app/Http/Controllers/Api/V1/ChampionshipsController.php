@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Actions\Championships\GenerateGamesAction;
+use App\Console\Commands\{CreateChampionshipCommand, RunChampionshipCommand};
 use App\Http\Controllers\Api\Controller;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Artisan;
 
 class ChampionshipsController extends Controller
 {
-    public function store(GenerateGamesAction $action)
+    public function generateChampionship(): JsonResponse
     {
-        return $action->execute(time());
+        Artisan::call(CreateChampionshipCommand::class);
+        Artisan::call(RunChampionshipCommand::class);
+
+        return response()->json(['message' => 'Championships generated successfully.']);
     }
 }
