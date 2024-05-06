@@ -54,4 +54,9 @@ class Game extends Model
     {
         return $this->hasMany(Team::class);
     }
+
+    public function isFirstRound(): bool
+    {
+        return 1 === $this->round;
+    }
 }

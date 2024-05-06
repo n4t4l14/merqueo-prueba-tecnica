@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Constants\TeamStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\{HasOne};
 
 /**
  * @property int        $id
@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int        $won_games
  * @property int        $lost_games
  * @property TeamStatus $team_status
+ * @property Team       $team
  */
 class ChampionshipResult extends Model
 {
@@ -38,8 +39,8 @@ class ChampionshipResult extends Model
         'lost_games',
     ];
 
-    public function teams(): HasMany
+    public function team(): HasOne
     {
-        return $this->hasMany(Team::class);
+        return $this->hasOne(Team::class, 'id', 'team_id');
     }
 }

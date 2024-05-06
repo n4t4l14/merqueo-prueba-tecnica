@@ -3,11 +3,11 @@
 namespace App\Actions\Championships;
 
 use App\Exceptions\ChampionshipException;
-use App\Models\{Game, Team};
+use App\Models\{ChampionshipResult, Game, Team};
 use App\Repositories\Contracts\{ChampionshipResultsRepositoryInterface,
     GameRepositoryInterface,
     TeamsRepositoryInterface};
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 
 class GenerateGamesAction
 {
@@ -19,6 +19,8 @@ class GenerateGamesAction
     }
 
     /**
+     * @return Collection<ChampionshipResult>
+     *
      * @throws ChampionshipException
      */
     public function execute(int $championshipCode, ?bool $startChampionship = true): Collection
@@ -43,7 +45,7 @@ class GenerateGamesAction
         $teamsGroups = $teamsNewOrder->chunk(2);
 
         $order = 1;
-        $games = Collection::make();
+        $games = collect();
         $teamsGroups->each(function (Collection $teams) use ($championshipCode, &$order, &$games, $round) {
             /** @var Team $teamA */
             $teamA = $teams->first();
